@@ -1,5 +1,13 @@
 <template>
-  <canvas ref="canvasRef" width="500" height="300"></canvas>
+  <div class="flex flex-1">
+    <div class="flex-1 p-[20px]" style="border-right: 1px solid #999">
+      <p>canvas的上下文通过getContext方法获取</p>
+      <p></p>
+    </div>
+    <div style="flex: 0 0 550px" class="flex justify-center mt-[20px]">
+      <div><canvas ref="canvasRef" width="500" height="500"></canvas></div>
+    </div>
+  </div>
 </template>
 <script setup lang="ts">
 import { ref, onMounted, type Ref } from 'vue'
