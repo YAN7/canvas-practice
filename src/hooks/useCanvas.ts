@@ -1,4 +1,4 @@
-import { onMounted, ref, type Ref } from 'vue'
+import { onMounted, ref, unref, type Ref } from 'vue'
 
 export const useCanvas = (canvasRef: Ref<HTMLCanvasElement>) => {
   const ctx = ref<CanvasRenderingContext2D>()

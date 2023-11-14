@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <el-menu class="menu" router>
+    <el-menu class="menu" router :default-active="$route.path">
       <el-menu-item v-for="btn in btns" :key="btn.path" :index="btn.path">
         {{ btn.name }}
       </el-menu-item>

@@ -20,13 +20,9 @@ const { ctx } = useCanvas(canvasRef as Ref<HTMLCanvasElement>)
 
 onMounted(() => {
   if (ctx.value) {
-    ctx.value.fillStyle = 'cyan'
-    ctx.value.fillRect(20, 20, 150, 150)
-
-    ctx.value.fillStyle = 'red'
-    ctx.value.strokeRect(40, 40, 150, 150)
-
-    ctx.value.clearRect(30, 30, 30, 30)
+    ctx.value.fillRect(25, 25, 100, 100)
+    ctx.value.clearRect(45, 45, 60, 60)
+    ctx.value.strokeRect(50, 50, 50, 50)
   }
 })
 </script>
