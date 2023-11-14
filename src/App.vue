@@ -18,14 +18,18 @@ const btns = ref<{ path: string; name: string }[]>([])
 
 const getBtns = () => {
   const modules = import.meta.glob('./views/*.vue')
+
   const autoRoutes = Object.entries(modules).map(([key]) => {
     const path = key.replace('./views', '').replace('.vue', '')
+    const name = path.replace('/', '')
+    const sort = parseInt(name.split('-')[0])
     return {
       path,
-      name: path.replace('/', '')
+      sort,
+      name
     }
   })
-  btns.value = autoRoutes
+  btns.value = autoRoutes.sort((a, b) => a.sort - b.sort)
 }
 
 onMounted(() => {
