@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <el-menu style="width: 260px" router>
+    <el-menu class="menu" router>
       <el-menu-item v-for="btn in btns" :key="btn.path" :index="btn.path">
         {{ btn.name }}
       </el-menu-item>
@@ -37,10 +37,12 @@ onMounted(() => {
 .main {
   display: flex;
 }
+.menu {
+  width: 260px;
+  min-height: 100vh;
+}
 .content {
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex: 1;
 }
 </style>
