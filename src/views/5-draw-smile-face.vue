@@ -40,8 +40,3 @@ onMounted(() => {
   }
 })
 </script>
-<style scoped lang="less">
-canvas {
-  border: 1px solid black;
-}
-</style>

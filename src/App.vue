@@ -50,3 +50,16 @@ onMounted(() => {
   flex: 1;
 }
 </style>
+
+<style>
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+}
+canvas {
+  border: 1px solid black;
+}
+</style>

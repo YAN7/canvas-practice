@@ -3,12 +3,8 @@
     <div class="flex-1 p-[20px]" style="border-right: 1px solid #999">
       <p>画图形的步骤:</p>
       <ol>
-        <li>beginPath起手</li>
-        <li>moveTo指定第一个点</li>
-        <li>lineTo是绘制直线的方法</li>
-        <li>使用closePath闭合图形</li>
-        <li>此时页面上还看不出来任何东西,需要用fill去填充</li>
-        <li>要新画一个图形的话,重新以beginPath起手</li>
+        <li>绘制三次贝塞尔曲线</li>
+        <li>同样高端操作,单靠代码没有工具辅助几乎不可能画出想要的图形</li>
       </ol>
     </div>
     <div style="flex: 0 0 550px" class="flex justify-center mt-[20px]">
@@ -26,20 +22,16 @@ const { ctx } = useCanvas(canvasRef as Ref<HTMLCanvasElement>)
 
 onMounted(() => {
   if (ctx.value) {
-    let cc = unref(ctx)!
+    const cc = unref(ctx)!
     cc.beginPath()
-    cc.moveTo(200, 100)
-    cc.lineTo(200, 200)
-    cc.lineTo(250, 150)
-    cc.closePath()
-    cc.fillStyle = 'cyan'
-    cc.fill()
-    cc.beginPath()
-    cc.moveTo(190, 100)
-    cc.lineTo(190, 200)
-    cc.lineTo(140, 150)
-    cc.closePath()
-    cc.fillStyle = 'orange'
+    cc.moveTo(75, 40)
+    cc.bezierCurveTo(75, 37, 70, 25, 50, 25)
+    cc.bezierCurveTo(20, 25, 20, 62.5, 20, 62.5)
+    cc.bezierCurveTo(20, 80, 40, 102, 75, 120)
+    cc.bezierCurveTo(110, 102, 130, 80, 130, 62.5)
+    cc.bezierCurveTo(130, 62.5, 130, 25, 100, 25)
+    cc.bezierCurveTo(85, 25, 75, 37, 75, 40)
+    cc.fillStyle = '#f30'
     cc.fill()
   }
 })

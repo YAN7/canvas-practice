@@ -23,8 +23,3 @@ onMounted(() => {
   ctx.fillRect(10, 10, 200, 200)
 })
 </script>
-<style scoped lang="less">
-canvas {
-  border: 1px solid black;
-}
-</style>
