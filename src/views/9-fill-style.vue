@@ -2,6 +2,7 @@
   <div class="flex flex-1">
     <div class="flex-1 p-[20px]" style="border-right: 1px solid #999">
       <ol>
+        <li>fillStyle是填充颜色</li>
         <li>fillStyle的写法和css中的color写法一样,支持多种颜色定义方式</li>
       </ol>
     </div>
