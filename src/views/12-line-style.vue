@@ -24,25 +24,63 @@ const drawLineWidth = (cc: CanvasRenderingContext2D) => {
   cc.lineWidth = 1
   cc.beginPath()
   cc.strokeStyle = 'orange'
-  cc.strokeRect(5, 5, 250, 250)
+  cc.strokeRect(5, 5, 240, 240)
   for (let i = 1; i <= 5; i++) {
     cc.beginPath()
     cc.lineWidth = i
     cc.strokeStyle = colors[i - 1]
     cc.moveTo(50 * i - 20, 10)
-    cc.lineTo(50 * i - 20, 245)
+    cc.lineTo(50 * i - 20, 240)
     cc.stroke()
   }
 }
 
 const drawLineCap = (cc: CanvasRenderingContext2D) => {
-  const lineCapStyle = ['butt', 'round', 'square']
+  const lineCapStyle: ('butt' | 'round' | 'square')[] = ['butt', 'round', 'square']
+  cc.beginPath()
+  cc.lineWidth = 1
+  cc.strokeRect(255, 5, 240, 240)
+  cc.moveTo(280, 40)
+  cc.lineTo(480, 40)
+  cc.stroke()
+  cc.moveTo(280, 200)
+  cc.lineTo(480, 200)
+  cc.stroke()
+  for (let i = 0; i < 3; i++) {
+    cc.lineWidth = 15
+    cc.lineCap = lineCapStyle[i]
+    cc.beginPath()
+    cc.moveTo(300 + i * 80, 40)
+    cc.lineTo(300 + i * 80, 200)
+    cc.stroke()
+  }
+}
+
+const drawLineJoin = (cc: CanvasRenderingContext2D) => {
+  cc.beginPath()
+  cc.lineWidth = 1
+  cc.strokeStyle = 'pink'
+  cc.strokeRect(5, 255, 240, 240)
+  const lineJoin: ('round' | 'bevel' | 'miter')[] = ['round', 'bevel', 'miter']
+  cc.lineWidth = 10
+  for (let i = 0; i < lineJoin.length; i++) {
+    cc.lineJoin = lineJoin[i]
+    cc.beginPath()
+    cc.moveTo(15, 265 + i * 40)
+    cc.lineTo(50, 305 + i * 40)
+    cc.lineTo(90, 265 + i * 40)
+    cc.lineTo(130, 305 + i * 40)
+    cc.lineTo(170, 265 + i * 40)
+    cc.stroke()
+  }
 }
 
 onMounted(() => {
   if (ctx.value) {
     const cc = unref(ctx)!
     drawLineWidth(cc)
+    drawLineCap(cc)
+    drawLineJoin(cc)
   }
 })
 </script>
