@@ -5,6 +5,12 @@
       <ol>
         <li>只能是正数</li>
       </ol>
+      <h3>lineCap, 设置线的端点样式</h3>
+      <ol>
+        <li>butt: 与辅助线齐平</li>
+        <li>round: 端点处加上了半径为一半线宽的半圆</li>
+        <li>square: 端点处加上了等宽且高度为一半线宽的方块</li>
+      </ol>
     </div>
     <div style="flex: 0 0 550px" class="flex justify-center mt-[20px]">
       <div><canvas ref="canvasRef" width="500" height="500"></canvas></div>

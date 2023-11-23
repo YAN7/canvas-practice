@@ -6,13 +6,13 @@
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
-    "build-only": "vite build",
-    "type-check": "vue-tsc --noEmit -p tsconfig.app.json --composite false",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-    "format": "prettier --write src/"
+    "generate": "esno scripts/generateFile.ts",
+    "g": "esno scripts/generateFile.ts"
   },
   "dependencies": {
     "element-plus": "^2.4.2",
+    "esno": "^4.0.0",
+    "minimist": "^1.2.8",
     "pinia": "^2.1.7",
     "vue": "^3.3.4",
     "vue-router": "^4.2.5"

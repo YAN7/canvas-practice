@@ -44,6 +44,8 @@ onMounted(() => {
 .menu {
   width: 260px;
   min-height: 100vh;
+  max-height: 100vh;
+  overflow-y: auto;
 }
 .content {
   display: flex;
