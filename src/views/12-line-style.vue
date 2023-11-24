@@ -11,6 +11,14 @@
         <li>round: 端点处加上了半径为一半线宽的半圆</li>
         <li>square: 端点处加上了等宽且高度为一半线宽的方块</li>
       </ol>
+      <h3>lineJoin,设置图形中两线段连接处所显示的样子,默认是miter</h3>
+      <ol>
+        <li>round: 边角处被磨圆了，圆的半径等于线宽</li>
+        <li>bevel: 与辅助线齐平</li>
+        <li>miter: 在连接处外侧延伸直至交于一点</li>
+      </ol>
+      <h3>setLineDash, 接受一个数组，来指定线段与间隙的交替</h3>
+      <h3>lineDashOffset，设置起始偏移量</h3>
     </div>
     <div style="flex: 0 0 550px" class="flex justify-center mt-[20px]">
       <div><canvas ref="canvasRef" width="500" height="500"></canvas></div>
@@ -72,13 +80,38 @@ const drawLineJoin = (cc: CanvasRenderingContext2D) => {
   for (let i = 0; i < lineJoin.length; i++) {
     cc.lineJoin = lineJoin[i]
     cc.beginPath()
-    cc.moveTo(15, 265 + i * 40)
-    cc.lineTo(50, 305 + i * 40)
-    cc.lineTo(90, 265 + i * 40)
-    cc.lineTo(130, 305 + i * 40)
-    cc.lineTo(170, 265 + i * 40)
+    cc.moveTo(45, 295 + i * 40)
+    cc.lineTo(80, 335 + i * 40)
+    cc.lineTo(120, 295 + i * 40)
+    cc.lineTo(160, 335 + i * 40)
+    cc.lineTo(200, 295 + i * 40)
     cc.stroke()
   }
+}
+
+const drawDashLineContainer = (cc: CanvasRenderingContext2D) => {
+  cc.beginPath()
+  cc.strokeStyle = 'lightgreen'
+  cc.lineWidth = 1
+  cc.strokeRect(255, 255, 235, 235)
+}
+
+const drawDashLine = (cc: CanvasRenderingContext2D) => {
+  cc.clearRect(260, 260, 220, 220)
+  cc.setLineDash([5, 5])
+  cc.strokeStyle = 'blue'
+  cc.strokeRect(300, 300, 150, 150)
+}
+
+let offset = 0
+const march = (cc: CanvasRenderingContext2D) => {
+  offset++
+  if (offset > 16) {
+    offset = 0
+  }
+  cc.lineDashOffset = -offset
+  drawDashLine(cc)
+  setTimeout(() => march(cc), 20)
 }
 
 onMounted(() => {
@@ -87,6 +120,8 @@ onMounted(() => {
     drawLineWidth(cc)
     drawLineCap(cc)
     drawLineJoin(cc)
+    drawDashLineContainer(cc)
+    march(cc)
   }
 })
 </script>
